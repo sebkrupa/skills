@@ -1,0 +1,23 @@
+[
+  {"task": "Fix a typo in README.md", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "What is 2+2?", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Rename the variable userName to username in one file", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Classify this support email as bug, question or feature request", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Summarize this paragraph in one sentence", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Find where the function parseConfig is defined", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Explain what this 200-line Python module does", "model": "Sonnet 5.5", "effort": "low"},
+  {"task": "Write a bash backup script that uses rsync to copy local data to a NAS", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Create a user story for our console application: a backup script that uses rsync to copy data from local to NAS", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Add unit tests for the date parsing helper", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Write a Python script that downloads YouTube audio as mp3", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Fix bug: the login button does nothing in Safari", "model": "Sonnet 5.5", "effort": "high"},
+  {"task": "Refactor a 300-line class into smaller functions without changing behavior", "model": "Sonnet 5.5", "effort": "high"},
+  {"task": "Debug a race condition that corrupts data in a multi-threaded C# service", "model": "Opus 5.5", "effort": "high"},
+  {"task": "Design a REST API for a multi-tenant SaaS app with auth, billing and data isolation", "model": "Opus 5.5", "effort": "high"},
+  {"task": "Do a security review of the authentication and payment modules", "model": "Opus 5.5", "effort": "high"},
+  {"task": "Migrate the whole codebase from .NET 6 to .NET 9", "model": "Opus 5.5", "effort": "xhigh"},
+  {"task": "Implement a new feature that touches the database, API, UI and tests across 25 files", "model": "Opus 5.5", "effort": "xhigh"},
+  {"task": "Design the end-to-end architecture of a low-latency distributed trading platform with failover and audit, then plan the full implementation", "model": "Fable 5.1", "effort": "xhigh"},
+  {"task": "Decide whether to move our production database to a new cloud provider, with cost, risk and rollback analysis", "model": "Fable 5.1", "effort": "xhigh"},
+  {"task": "Invent and prove correct a new consensus algorithm that tolerates Byzantine faults", "model": "Fable 5.1", "effort": "max"}
+]
