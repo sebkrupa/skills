@@ -1,0 +1,33 @@
+{
+  "server": "http://localhost:9931",
+  "default": "q4",
+  "fallback": ["nimble"],
+  "models": {
+    "q4": {
+      "label": "basal-omni-1.0-ultra Q4_K_S (31B, 19.5 GB)",
+      "aliases": ["q4_k_s", "basal-q4"],
+      "backend": "prefill",
+      "id": "bartowski/Remek_basal-omni-1.0-ultra-GGUF:Q4_K_S",
+      "download": "llama download -hf bartowski/Remek_basal-omni-1.0-ultra-GGUF:Q4_K_S",
+      "threshold": 0.75,
+      "temperature": {"choice": {"2-10": 1.0443, "11-26": 1.0749}, "noul": 0.9439, "score": 1.2419}
+    },
+    "bf16": {
+      "label": "basal-omni-1.0-ultra BF16 (31B, 62.6 GB)",
+      "aliases": ["basal-bf16"],
+      "backend": "prefill",
+      "id": "bartowski/Remek_basal-omni-1.0-ultra-GGUF:BF16",
+      "download": "llama download -hf bartowski/Remek_basal-omni-1.0-ultra-GGUF:BF16",
+      "threshold": 0.75,
+      "temperature": {"choice": {"2-10": 1.0443, "11-26": 1.0749}, "noul": 0.9439, "score": 1.2419}
+    },
+    "nimble": {
+      "label": "Bespoke Nimble 9B v3 Q8_0 (9B, 9.5 GB, native decision model)",
+      "aliases": ["bespoke-nimble"],
+      "backend": "systemone",
+      "id": "ggml-org/Bespoke-Nimble-9B-v3-GGUF:Q8_0",
+      "download": "llama download -hf ggml-org/Bespoke-Nimble-9B-v3-GGUF:Q8_0",
+      "threshold": 0.75
+    }
+  }
+}

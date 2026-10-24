@@ -1,0 +1,12 @@
+[
+  {"task": "Translate this error message into German", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Convert this JSON config to YAML", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Write a short commit message for this diff", "model": "Haiku 5.5", "effort": "low"},
+  {"task": "Add a --dry-run flag to my existing cleanup shell script", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Napisz skrypt PowerShell, który usuwa pliki starsze niż 30 dni z folderu Downloads", "model": "Sonnet 5.5", "effort": "medium"},
+  {"task": "Our nightly cron job sometimes exits with code 137, find out why", "model": "Sonnet 5.5", "effort": "high"},
+  {"task": "Review this pull request that changes 3 files in the payment flow", "model": "Opus 5.5", "effort": "high"},
+  {"task": "Find the root cause of a memory leak that appears only after 3 days of uptime in our Kubernetes service", "model": "Opus 5.5", "effort": "high"},
+  {"task": "Replace the hand-written SQL in 40 repository classes with Entity Framework Core", "model": "Opus 5.5", "effort": "xhigh"},
+  {"task": "Przygotuj strategię wejścia naszej firmy na rynek niemiecki z analizą kosztów i ryzyk", "model": "Fable 5.1", "effort": "xhigh"}
+]

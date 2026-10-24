@@ -1,0 +1,13 @@
+[
+  {"task": "Fix a typo in README.md", "points": 1},
+  {"task": "Rename the variable userName to username in one file", "points": 1},
+  {"task": "Add a --verbose flag to an existing Python CLI script", "points": 2},
+  {"task": "Write a bash backup script that uses rsync to copy local data to a NAS", "points": 3},
+  {"task": "Add unit tests for the date parsing helper", "points": 3},
+  {"task": "Add input validation and error messages to the signup form and its API endpoint", "points": 5},
+  {"task": "Implement a new feature that touches the database, API, UI and tests across 25 files", "points": 8},
+  {"task": "Migrate the whole codebase from .NET 6 to .NET 9", "points": 13},
+  {"task": "Build a user management module with roles, permissions, an audit log and an admin UI", "points": 13},
+  {"task": "Design and build a multi-tenant SaaS platform with billing, auth, an admin panel and a public API", "points": 21},
+  {"task": "Build a complete online shop from scratch: catalog, cart, payments, orders, admin and deployment", "points": 21}
+]
