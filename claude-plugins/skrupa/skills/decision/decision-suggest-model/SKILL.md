@@ -1,6 +1,6 @@
 ---
-name: suggest-model
-description: Ask a local decision model which Claude model and reasoning effort fit a task. It only prints the answer and does not run the task. Use only when the user runs /decision-routing:suggest-model.
+name: decision-suggest-model
+description: Ask a local decision model which Claude model and reasoning effort fit a task. It only prints the answer and does not run the task. Use only when the user runs /skrupa:decision-suggest-model.
 argument-hint: [--decider <name>] <task or question>
 disable-model-invocation: true
 ---
@@ -15,7 +15,7 @@ If the task is empty, ask the user for it and stop.
 
 Do not do the task. This skill only finds the model and the effort for it.
 
-The script is `${CLAUDE_SKILL_DIR}/../../scripts/decision.py`. Run it with `python3`.
+The script is `${CLAUDE_SKILL_DIR}/../../../scripts/decision/decision.py`. Run it with `python3`.
 Pick the decision model by the rules in `${CLAUDE_SKILL_DIR}/../decision-models/SKILL.md` (section "Rules for skills"). Read that file first.
 `python3 <script> model "<task>"` prints JSON. For each field (`model`, `effort`) it gives `choice`, `probability`, `confidence`, `passed` and `probabilities`.
 `passed` is true when `probability` >= the threshold (`threshold` in the script output; each decision model has its own).

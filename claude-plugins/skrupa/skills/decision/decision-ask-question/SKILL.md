@@ -1,6 +1,6 @@
 ---
-name: ask-question
-description: Ask a local decision model any typed question about a text - a choice from a list, a yes or no question, or a rating on a scale (for example a Fibonacci estimate of a task or a 0-100 level). Use only when the user runs /decision-routing:ask-question.
+name: decision-ask-question
+description: Ask a local decision model any typed question about a text - a choice from a list, a yes or no question, or a rating on a scale (for example a Fibonacci estimate of a task or a 0-100 level). Use only when the user runs /skrupa:decision-ask-question.
 argument-hint: [--decider <name>] <question and the text to judge>
 disable-model-invocation: true
 ---
@@ -13,7 +13,7 @@ $ARGUMENTS
 
 If the request is empty, ask the user for it and stop.
 
-The script is `${CLAUDE_SKILL_DIR}/../../scripts/decision.py`. Run it with `python3`.
+The script is `${CLAUDE_SKILL_DIR}/../../../scripts/decision/decision.py`. Run it with `python3`.
 Pick the decision model by the rules in `${CLAUDE_SKILL_DIR}/../decision-models/SKILL.md` (section "Rules for skills"). Read that file first.
 The decision model judges a text (the `state`) with typed questions. It cannot write text. It only picks from the answers you give it.
 Send the request at once. Do not ask the user to confirm it first.

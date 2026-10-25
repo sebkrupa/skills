@@ -1,6 +1,6 @@
 ---
-name: run-on-suggested-model
-description: Ask a local decision model which Claude model and reasoning effort fit a task, then run the task in a subagent with that model and effort. Use only when the user runs /decision-routing:run-on-suggested-model.
+name: decision-run-on-suggested-model
+description: Ask a local decision model which Claude model and reasoning effort fit a task, then run the task in a subagent with that model and effort. Use only when the user runs /skrupa:decision-run-on-suggested-model.
 argument-hint: [--decider <name>] <task or question>
 disable-model-invocation: true
 ---
@@ -16,8 +16,8 @@ If the task is empty, ask the user for it and stop.
 ## 1. Find the model and effort
 
 Pick the decision model by the rules in `${CLAUDE_SKILL_DIR}/../decision-models/SKILL.md` (section "Rules for skills"). Read that file first.
-Read `${CLAUDE_SKILL_DIR}/../suggest-model/SKILL.md` and do its steps 1 to 3 for this task.
-Use the task above in place of `$ARGUMENTS`. The script path in that file is `${CLAUDE_SKILL_DIR}/../../scripts/decision.py`.
+Read `${CLAUDE_SKILL_DIR}/../decision-suggest-model/SKILL.md` and do its steps 1 to 3 for this task.
+Use the task above in place of `$ARGUMENTS`. The script path in that file is `${CLAUDE_SKILL_DIR}/../../../scripts/decision/decision.py`.
 Do these steps differently:
 - Exit code 2 (decision model not reachable): tell the user "The decision model is not reachable, running with the current model." Then do the task yourself and stop here.
 - A field has not passed after 4 attempts: show the table of all attempts. Ask the user with AskUserQuestion:
