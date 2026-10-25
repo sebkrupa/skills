@@ -17,7 +17,7 @@ Skills that let a small local model make quick decisions, so Claude does not hav
 | `/skrupa:decision-ask-question` | Answers any typed question about a text: pick from a list, yes or no, or a level. |
 | `/skrupa:decision-suggest-model` | Tells you which Claude model and effort fit a task. |
 | `/skrupa:decision-run-on-suggested-model` | Does the same, then runs the task on that model. |
-| `/skrupa:decision-plan-and-run` | Splits a big task into steps, picks a model for each, and runs them. |
+| `/skrupa:decision-plan-and-run` | Splits a big task into steps, picks a model for each, and runs them in one main loop. |
 | `/skrupa:decision-models` | Lists the local decision models and which one is used. |
 
 ### coach
@@ -144,7 +144,7 @@ Inside Claude Code you can do the same with `/plugin marketplace add <path>` and
 | `/skrupa:decision-ask-question <question and text>` | Any typed question about a text: a choice from a list, yes or no, a level on a scale, or a Fibonacci size estimate. | No |
 | `/skrupa:decision-suggest-model <task>` | Prints the Claude model and reasoning effort that fit the task. | No |
 | `/skrupa:decision-run-on-suggested-model <task>` | Picks the model and effort, then runs the task in a subagent with them. | Yes, one task |
-| `/skrupa:decision-plan-and-run <task>` | Estimates the size, splits the task into steps or milestones, picks the model and effort of each step, writes a plan to `.claude/plans/`, asks for approval, then runs the steps with subagents and writes a summary. | Yes, a plan |
+| `/skrupa:decision-plan-and-run <task>` | Estimates the size, splits the task into steps or milestones, picks the model and effort of each step, writes a plan to `.claude/plans/`, asks for approval, then runs the plan in the main loop (subagents only for parallel, large-context or different-model steps and a final review) and writes a summary. See [the decision skills README](claude-plugins/skrupa/skills/decision/README.md). | Yes, a plan |
 | `/skrupa:decision-decision-models` | Lists the decision models, their status, the default and the fallback order. | No |
 
 ### Pick the decision model
