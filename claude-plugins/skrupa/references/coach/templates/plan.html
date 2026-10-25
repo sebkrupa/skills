@@ -1,0 +1,121 @@
+<title>Plan dnia</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--line:#e4e4de;--ac:#2f6fed;--ok:#2e9e5b;--late:#d8453b;--fix:#8a6d1a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#141413;--fg:#ececE6;--mut:#9a9a93;--card:#1e1e1c;--line:#33332f;--ac:#6b9bff;--ok:#4cc17f;--late:#ff7168;--fix:#e0c060}}
+:root[data-theme=dark]{--bg:#141413;--fg:#ececE6;--mut:#9a9a93;--card:#1e1e1c;--line:#33332f;--ac:#6b9bff;--ok:#4cc17f;--late:#ff7168;--fix:#e0c060}
+body{background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif;margin:0}
+main{max-width:720px;margin:0 auto;padding:16px}
+#tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
+#tabs button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer;white-space:nowrap}
+#tabs button[aria-selected=true]{border-color:var(--ac);color:var(--ac)}
+#sum{margin:12px 0;font-size:14px;color:var(--mut)}
+#bar{height:8px;background:var(--line);border-radius:4px;position:relative;margin:6px 0}
+#bar i{position:absolute;inset:0 auto 0 0;background:var(--ok);border-radius:4px}
+#bar b{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ac)}
+ul{list-style:none;margin:0;padding:0}
+li.item{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:10px 12px}
+li.item.now{border-color:var(--ac)}
+li.item.late .t{color:var(--late)}
+li.item.done .ttl{text-decoration:line-through;color:var(--mut)}
+.row{display:flex;gap:10px;align-items:center}
+.row input{width:20px;height:20px;flex:none}
+.row .sp{width:20px;flex:none}
+.ttl{flex:1;text-align:left;background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
+.t{font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--mut)}
+.tag.fixed{color:var(--fix)}
+.det{display:none;margin:8px 0 0 30px;font-size:14px;color:var(--mut)}
+li.open .det{display:block}
+.det p{margin:2px 0}
+li.nowline{height:2px;background:var(--ac);margin:10px 0;position:relative}
+li.nowline span{position:absolute;right:0;top:-9px;font-size:11px;background:var(--bg);color:var(--ac);padding:0 4px}
+#empty{color:var(--mut)}
+</style>
+<main>
+<div id="tabs" role="tablist"></div>
+<div id="sum"></div>
+<ul id="list"></ul>
+<p id="empty" hidden>Brak planu na ten dzień. Poproś coacha o plan.</p>
+</main>
+<!-- Initial data used when the db is absent. Shape of one day: {date:"yyyy-mm-dd",items:[{id,start:"HH:MM",end:"HH:MM",title,type:"fixed|must|nice|suggestion",source,why,notes,done:false}]} -->
+<script id="seed" type="application/json">{"days":[]}</script>
+<script>
+const $=s=>document.querySelector(s);
+const M=h=>{const[a,b]=h.split(":");return +a*60+ +b};
+const pad=n=>String(n).padStart(2,"0");
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())};
+const nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
+const LS="coach-plan-checks";
+const TYPE={fixed:"stałe",must:"priorytet",nice:"miło mieć",suggestion:"propozycja"};
+let days={},sel=today(),db=null;
+const ls=()=>{try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return{}}};
+const lsSave=o=>{try{localStorage.setItem(LS,JSON.stringify(o))}catch(e){}};
+
+async function toggle(date,id,val){
+  const day=days[date];if(!day)return;
+  const items=day.items.map(i=>i.id===id?{...i,done:val}:i);
+  days[date]={...day,items};render();
+  if(db){try{await db.doc("days/"+date).update({items})}catch(e){}}
+  else{const o=ls();o[date+"/"+id]=val;lsSave(o)}
+}
+
+function render(){
+  const dates=Object.keys(days).sort();
+  const tabs=$("#tabs");tabs.textContent="";
+  dates.forEach(d=>{const b=document.createElement("button");b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",d===sel);
+    b.textContent=new Date(d+"T12:00").toLocaleDateString("pl-PL",{weekday:"short",day:"numeric",month:"numeric"});
+    b.onclick=()=>{sel=d;render()};tabs.append(b)});
+  const day=days[sel],list=$("#list");list.textContent="";
+  $("#empty").hidden=!!day;$("#sum").textContent="";
+  if(!day)return;
+  const isToday=sel===today(),n=nowMin(),past=sel<today();
+  const items=[...day.items].sort((a,b)=>M(a.start)-M(b.start));
+  let should=0,did=0,total=0,markerDone=false;
+  items.forEach(i=>{if(i.type==="fixed")return;const dur=M(i.end)-M(i.start);total+=dur;
+    if(i.done)did+=dur;should+=past?dur:isToday?Math.min(Math.max(n-M(i.start),0),dur):0});
+  $("#sum").innerHTML='<div></div><div id="bar"><i></i>'+(isToday?"<b></b>":"")+"</div>";
+  $("#sum").firstChild.textContent=`Zrobione ${did} min · powinno być ${should} min · razem ${total} min`+(did<should?` · zaległość ${should-did} min`:"");
+  if(total){$("#bar i").style.width=did/total*100+"%";const m=$("#bar b");if(m)m.style.left=should/total*100+"%"}
+  items.forEach(i=>{
+    if(isToday&&!markerDone&&M(i.start)>n){markerDone=true;list.append(nowLine(n))}
+    const s=M(i.start),e=M(i.end),cur=isToday&&s<=n&&n<e,fixed=i.type==="fixed";
+    const li=document.createElement("li");
+    li.className="item"+(i.done?" done":"")+(cur?" now":"")+(!fixed&&!i.done&&(past||(isToday&&e<=n))?" late":"");
+    const row=document.createElement("div");row.className="row";
+    if(fixed){const sp=document.createElement("span");sp.className="sp";row.append(sp)}
+    else{const c=document.createElement("input");c.type="checkbox";c.checked=!!i.done;
+      c.setAttribute("aria-label",i.title);c.onchange=()=>toggle(sel,i.id,c.checked);row.append(c)}
+    const t=document.createElement("span");t.className="t";t.textContent=i.start+"–"+i.end;
+    const b=document.createElement("button");b.className="ttl";b.textContent=i.title;
+    b.setAttribute("aria-expanded","false");
+    b.onclick=()=>{const o=li.classList.toggle("open");b.setAttribute("aria-expanded",o)};
+    const tag=document.createElement("span");tag.className="tag"+(fixed?" fixed":"");tag.textContent=TYPE[i.type]||i.type;
+    row.append(t,b,tag);
+    const det=document.createElement("div");det.className="det";
+    [["Źródło",i.source],["Dlaczego",i.why],["Notatki",i.notes],["Czas",(e-s)+" min"]].forEach(([k,v])=>{
+      if(!v)return;const p=document.createElement("p");p.textContent=k+": "+v;det.append(p)});
+    li.append(row,det);list.append(li);
+  });
+  if(isToday&&!markerDone&&items.length)list.append(nowLine(n));
+}
+function nowLine(n){const l=document.createElement("li");l.className="nowline";
+  const s=document.createElement("span");s.textContent="teraz "+pad(Math.floor(n/60))+":"+pad(n%60);l.append(s);return l}
+
+(async()=>{
+  const seed=JSON.parse($("#seed").textContent).days||[];
+  const o=ls();
+  seed.forEach(d=>days[d.date]={...d,items:d.items.map(i=>({...i,done:o[d.date+"/"+i.id]??i.done}))});
+  if(!days[sel]&&seed.length)sel=seed.map(d=>d.date).sort().find(d=>d>=sel)||seed[seed.length-1].date;
+  render();
+  try{
+    db=await claude.use("db");
+    if(db)db.collection("days").onSnapshot(snap=>{
+      snap.docs.forEach(d=>{if(d.exists)days[d.id]=d.data()});
+      if(!days[sel]){const k=Object.keys(days).sort();sel=k.find(x=>x>=today())||k[k.length-1]||sel}
+      render();
+    },()=>{});
+  }catch(e){}
+  setInterval(render,60000);
+})();
+</script>

@@ -10,7 +10,7 @@
     {
       "name": "skrupa",
       "source": "./skrupa",
-      "description": "Sebastian Krupa's skills. Decision: local decision models (llama.cpp) for typed decisions, size estimates and Claude model and effort routing."
+      "description": "Sebastian Krupa's skills. Decision: local decision models (llama.cpp) for typed decisions, size estimates and Claude model and effort routing. Coach: personal coach and day/week planner for Claude Desktop Projects."
     }
   ]
 }

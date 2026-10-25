@@ -20,6 +20,20 @@ Skills that let a small local model make quick decisions, so Claude does not hav
 | `/skrupa:decision-plan-and-run` | Splits a big task into steps, picks a model for each, and runs them. |
 | `/skrupa:decision-models` | Lists the local decision models and which one is used. |
 
+### coach
+
+A personal coach for Claude Desktop Projects. One project is one person, with its own `profil.md` and data. Start with `/skrupa:coach-setup`; replies follow the language set in `profil.md`.
+
+| Skill | What it does |
+|---|---|
+| `/skrupa:coach-setup` | Interviews you and outputs the project instructions and `profil.md`. |
+| `/skrupa:coach-summary` | Where you are and how it is going, from diary, health, todo and goals. |
+| `/skrupa:coach-motivate` | Motivation and one next step from the todo list. |
+| `/skrupa:coach-revise` | Reviews the todo list and goals. |
+| `/skrupa:coach-fitness` | One health step built into the day. |
+| `/skrupa:coach-daily-planner` | Plans one day (calendar, priorities, spare time) and publishes a checklist page with live progress. |
+| `/skrupa:coach-weekly-planner` | Plans a week in conversation and seeds each day for the daily planner. |
+
 ---
 
 # decision
