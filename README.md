@@ -36,6 +36,21 @@ A personal coach for Claude Desktop Projects. One project is one person, with it
 
 ---
 
+# coach
+
+A personal coach for [Claude Desktop](https://claude.ai/download) Projects. One project is one person. A plugin cannot edit a Project, so `/skrupa:coach-setup` interviews you (name, language, diary, health tracker, todo list, goals) and outputs two things: the text for "Set project instructions" and a `profil.md` for "Context". The other coach skills read `profil.md` and your data. Replies follow the language set in `profil.md`.
+
+Order of use:
+
+1. `/skrupa:coach-setup` once per person.
+2. `/skrupa:coach-weekly-planner` once a week: plans the week and seeds each day.
+3. `/skrupa:coach-daily-planner` each morning: calendar, priorities and spare time become a checklist page with live progress.
+4. `/skrupa:coach-summary`, `/skrupa:coach-motivate`, `/skrupa:coach-revise`, `/skrupa:coach-fitness` whenever you need them.
+
+Shared rules and the `profil.md` template are in [`references/coach`](claude-plugins/skrupa/references/coach).
+
+---
+
 # decision
 
 A decision model does not write text. It reads a text (the *state*) and answers a typed question about it: a choice from a list, yes or no, or a level on a scale. It gives a probability for each allowed answer in one forward pass. This plugin uses such a model, running locally on llama.cpp, to make routing decisions for Claude Code:
