@@ -8,9 +8,9 @@
   },
   "plugins": [
     {
-      "name": "decision-routing",
-      "source": "./decision-routing",
-      "description": "Local decision models (llama.cpp) for typed decisions, size estimates and Claude model and effort routing."
+      "name": "skrupa",
+      "source": "./skrupa",
+      "description": "Sebastian Krupa's skills. Decision: local decision models (llama.cpp) for typed decisions, size estimates and Claude model and effort routing."
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
-name: plan-and-run
-description: Plan a task with a local decision model and run the plan with subagents. The decision model estimates the size (Fibonacci) to set the number of steps or milestones, and picks the model and effort of each step. Saves the plan and an execution summary to .claude/plans/. Use only when the user runs /decision-routing:plan-and-run.
+name: decision-plan-and-run
+description: Plan a task with a local decision model and run the plan with subagents. The decision model estimates the size (Fibonacci) to set the number of steps or milestones, and picks the model and effort of each step. Saves the plan and an execution summary to .claude/plans/. Use only when the user runs /skrupa:decision-plan-and-run.
 argument-hint: [--decider <name>] <task>
 disable-model-invocation: true
 ---
@@ -13,9 +13,9 @@ $ARGUMENTS
 
 If the task is empty, ask the user for it and stop.
 
-The script is `${CLAUDE_SKILL_DIR}/../../scripts/decision.py`. Run it with `python3`.
+The script is `${CLAUDE_SKILL_DIR}/../../../scripts/decision/decision.py`. Run it with `python3`.
 Pick the decision model by the rules in `${CLAUDE_SKILL_DIR}/../decision-models/SKILL.md` (section "Rules for skills"). Read that file first.
-To pick a model and effort, this skill uses the steps in `${CLAUDE_SKILL_DIR}/../suggest-model/SKILL.md`. Read that file before step 2.
+To pick a model and effort, this skill uses the steps in `${CLAUDE_SKILL_DIR}/../decision-suggest-model/SKILL.md`. Read that file before step 2.
 The script path in that file is the same script as above.
 
 Write the plan file and all messages in the language of the task.
@@ -49,7 +49,7 @@ Each step is one clear action with a clear result. Put the steps in the order to
 
 ## 2. Pick the model and effort of each step
 
-For each step, do steps 1 and 2 of suggest-model with the step text in place of `$ARGUMENTS`. Do these things differently:
+For each step, do steps 1 and 2 of decision-suggest-model with the step text in place of `$ARGUMENTS`. Do these things differently:
 - Do not show the result of each step to the user. Keep it for the plan.
 - A field has not passed after 4 attempts: use the most probable choice for now and add the step to the open questions.
 - The final effort is `max`: add the step to the open questions.
@@ -150,7 +150,7 @@ At the end of the plan file, under "Summary", write:
 - A table of the steps: number, status, model, effort, number of decision model attempts, number of retries.
 - The problems, the errors and the decisions of the user during the run.
 - The fit of each step: was the model and effort too weak, right or too strong? Give one reason. Signs: errors, retries, or simple work on a strong model.
-- Lessons: what to improve in the planning and in the decision-routing plugin (criteria, scale, thresholds).
+- Lessons: what to improve in the planning and in the skrupa plugin (criteria, scale, thresholds).
 
 Write the summary also when the workflow stops early.
 

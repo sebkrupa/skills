@@ -1,8 +1,0 @@
-{
-  "name": "decision-routing",
-  "version": "1.0.0",
-  "description": "Asks a local decision model (llama.cpp) typed questions: any decision, a size estimate, and which Claude model and effort fit a task. Can run a task or a whole plan with subagents. The decision model is chosen per run; the default is basal-omni-1.0-ultra Q4_K_S.",
-  "author": {
-    "name": "Sebastian Krupa"
-  }
-}

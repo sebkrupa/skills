@@ -1,14 +1,14 @@
 ---
 name: decision-models
-description: List the local decision models of the decision-routing plugin, their status on the llama.cpp server and the default one. Also holds the rules the other decision-routing skills use to pick the decision model. Use only when the user runs /decision-routing:decision-models.
+description: List the local decision models of the skrupa plugin, their status on the llama.cpp server and the default one. Also holds the rules the other decision skills use to pick the decision model. Use only when the user runs /skrupa:decision-models.
 argument-hint: (no arguments)
 disable-model-invocation: true
 ---
 
 # Decision models
 
-The script is `${CLAUDE_SKILL_DIR}/../../scripts/decision.py`. Run it with `python3`.
-The models are in `${CLAUDE_SKILL_DIR}/../../scripts/models.json`. To add a model, add one entry there.
+The script is `${CLAUDE_SKILL_DIR}/../../../scripts/decision/decision.py`. Run it with `python3`.
+The models are in `${CLAUDE_SKILL_DIR}/../../../scripts/decision/models.json`. To add a model, add one entry there.
 
 ## List the models
 
@@ -17,11 +17,11 @@ Run `python3 <script> models`. Show:
 - A table: name, label, aliases, status, threshold. Mark the default model.
 - The fallback order (used only when no model is given).
 - For each model with status "not downloaded": its `download` command. Tell the user that the server must be restarted after a download (quit and open the Llama app again).
-- How to pick a model: add `--decider <name or alias>` to any decision-routing command, for example `/decision-routing:plan-and-run --decider nimble <task>`.
+- How to pick a model: add `--decider <name or alias>` to any skrupa command, for example `/skrupa:decision-plan-and-run --decider nimble <task>`.
 
 ## Rules for skills
 
-The other decision-routing skills read this section. Follow it in every skill that runs the script.
+The other decision skills read this section. Follow it in every skill that runs the script.
 
 1. **Read the choice.** If the user text has `--decider <name>`, take the name and remove `--decider <name>` from the text. The rest is the task or the request.
 2. **Pass the choice.** Add `--decider <name>` before the mode in every script call, for example `python3 <script> --decider nimble model "<task>"`. Without a name, do not add it.
