@@ -1,0 +1,17 @@
+{
+  "name": "sk-coach",
+  "version": "1.0.0",
+  "description": "Sebastian Krupa's personal coach for Claude Desktop Projects (one project per person) with summary, motivation, revision, fitness, daily and weekly planner.",
+  "author": {
+    "name": "Sebastian Krupa"
+  },
+  "skills": [
+    "./skills/setup",
+    "./skills/summary",
+    "./skills/motivate",
+    "./skills/revise",
+    "./skills/fitness",
+    "./skills/daily-planner",
+    "./skills/weekly-planner"
+  ]
+}
