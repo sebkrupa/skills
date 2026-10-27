@@ -4,7 +4,9 @@ Claude Code plugins by Sebastian Krupa.
 
 > The details of every skill are inside its `SKILL.md`. You are more than welcome to read them.
 
-Plugin: [`skrupa`](claude-plugins/skrupa). Every skill is called `/skrupa:<group>-<skill>`.
+Plugins: [`sk-dev`](claude-plugins/sk-dev) (skills called `/sk-dev:<group>-<skill>`) and [`sk-coach`](claude-plugins/sk-coach) (skills called `/sk-coach:<skill>`).
+
+Notable plugins from other repositories: [`external`](external).
 
 ## Groups
 
@@ -14,40 +16,40 @@ Skills that let a small local model make quick decisions, so Claude does not hav
 
 | Skill | What it does |
 |---|---|
-| `/skrupa:decision-ask-question` | Answers any typed question about a text: pick from a list, yes or no, or a level. |
-| `/skrupa:decision-suggest-model` | Tells you which Claude model and effort fit a task. |
-| `/skrupa:decision-run-on-suggested-model` | Does the same, then runs the task on that model. |
-| `/skrupa:decision-plan-and-run` | Splits a big task into steps, picks a model for each, and runs them in one main loop. |
-| `/skrupa:decision-models` | Lists the local decision models and which one is used. |
+| `/sk-dev:decision-ask-question` | Answers any typed question about a text: pick from a list, yes or no, or a level. |
+| `/sk-dev:decision-suggest-model` | Tells you which Claude model and effort fit a task. |
+| `/sk-dev:decision-run-on-suggested-model` | Does the same, then runs the task on that model. |
+| `/sk-dev:decision-plan-and-run` | Splits a big task into steps, picks a model for each, and runs them in one main loop. |
+| `/sk-dev:decision-models` | Lists the local decision models and which one is used. |
 
 ### coach
 
-A personal coach for Claude Desktop Projects. One project is one person, with its own `profil.md` and data. Start with `/skrupa:coach-setup`; replies follow the language set in `profil.md`.
+A personal coach for Claude Desktop Projects. One project is one person, with its own `profil.md` and data. Start with `/sk-coach:setup`; replies follow the language set in `profil.md`.
 
 | Skill | What it does |
 |---|---|
-| `/skrupa:coach-setup` | Interviews you and outputs the project instructions and `profil.md`. |
-| `/skrupa:coach-summary` | Where you are and how it is going, from diary, health, todo and goals. |
-| `/skrupa:coach-motivate` | Motivation and one next step from the todo list. |
-| `/skrupa:coach-revise` | Reviews the todo list and goals. |
-| `/skrupa:coach-fitness` | One health step built into the day. |
-| `/skrupa:coach-daily-planner` | Plans one day (calendar, priorities, spare time) and publishes a checklist page with live progress. |
-| `/skrupa:coach-weekly-planner` | Plans a week in conversation and seeds each day for the daily planner. |
+| `/sk-coach:setup` | Interviews you and outputs the project instructions and `profil.md`. |
+| `/sk-coach:summary` | Where you are and how it is going, from diary, health, todo and goals. |
+| `/sk-coach:motivate` | Motivation and one next step from the todo list. |
+| `/sk-coach:revise` | Reviews the todo list and goals. |
+| `/sk-coach:fitness` | One health step built into the day. |
+| `/sk-coach:daily-planner` | Plans one day (calendar, priorities, spare time) and publishes a checklist page with live progress. |
+| `/sk-coach:weekly-planner` | Plans a week in conversation and seeds each day for the daily planner. |
 
 ---
 
 # coach
 
-A personal coach for [Claude Desktop](https://claude.ai/download) Projects. One project is one person. A plugin cannot edit a Project, so `/skrupa:coach-setup` interviews you (name, language, diary, health tracker, todo list, goals) and outputs two things: the text for "Set project instructions" and a `profil.md` for "Context". The other coach skills read `profil.md` and your data. Replies follow the language set in `profil.md`.
+A personal coach for [Claude Desktop](https://claude.ai/download) Projects. One project is one person. A plugin cannot edit a Project, so `/sk-coach:setup` interviews you (name, language, diary, health tracker, todo list, goals) and outputs two things: the text for "Set project instructions" and a `profil.md` for "Context". The other coach skills read `profil.md` and your data. Replies follow the language set in `profil.md`.
 
 Order of use:
 
-1. `/skrupa:coach-setup` once per person.
-2. `/skrupa:coach-weekly-planner` once a week: plans the week and seeds each day.
-3. `/skrupa:coach-daily-planner` each morning: calendar, priorities and spare time become a checklist page with live progress.
-4. `/skrupa:coach-summary`, `/skrupa:coach-motivate`, `/skrupa:coach-revise`, `/skrupa:coach-fitness` whenever you need them.
+1. `/sk-coach:setup` once per person.
+2. `/sk-coach:weekly-planner` once a week: plans the week and seeds each day.
+3. `/sk-coach:daily-planner` each morning: calendar, priorities and spare time become a checklist page with live progress.
+4. `/sk-coach:summary`, `/sk-coach:motivate`, `/sk-coach:revise`, `/sk-coach:fitness` whenever you need them.
 
-Shared rules and the `profil.md` template are in [`references/coach`](claude-plugins/skrupa/references/coach).
+Shared rules and the `profil.md` template are in [`references`](claude-plugins/sk-coach/references).
 
 ---
 
@@ -113,7 +115,7 @@ llama download -hf bartowski/Remek_basal-omni-1.0-ultra-GGUF:BF16
 
 ```bash
 git clone https://github.com/sebkrupa/skills.git
-cd skills/claude-plugins/skrupa/scripts/decision
+cd skills/claude-plugins/sk-dev/scripts/decision
 python3 decision.py --self-test
 python3 decision.py models
 ```
@@ -132,28 +134,29 @@ The marketplace file is in `claude-plugins/.claude-plugin/marketplace.json` of t
 
 ```bash
 claude plugin marketplace add /path/to/skills/claude-plugins
-claude plugin install skrupa@skrupa-skills
+claude plugin install sk-dev@skrupa-skills
+claude plugin install sk-coach@skrupa-skills
 ```
 
-Inside Claude Code you can do the same with `/plugin marketplace add <path>` and `/plugin install skrupa@skrupa-skills`. Restart Claude Code after the install.
+Inside Claude Code you can do the same with `/plugin marketplace add <path>` and `/plugin install sk-dev@skrupa-skills` (and `sk-coach@skrupa-skills`). Restart Claude Code after the install.
 
 ## Commands
 
 | Command | What it does | Runs work? |
 |---|---|---|
-| `/skrupa:decision-ask-question <question and text>` | Any typed question about a text: a choice from a list, yes or no, a level on a scale, or a Fibonacci size estimate. | No |
-| `/skrupa:decision-suggest-model <task>` | Prints the Claude model and reasoning effort that fit the task. | No |
-| `/skrupa:decision-run-on-suggested-model <task>` | Picks the model and effort, then runs the task in a subagent with them. | Yes, one task |
-| `/skrupa:decision-plan-and-run <task>` | Estimates the size, splits the task into steps or milestones, picks the model and effort of each step, writes a plan to `.claude/plans/`, asks for approval, then runs the plan in the main loop (subagents only for parallel, large-context or different-model steps and a final review) and writes a summary. See [the decision skills README](claude-plugins/skrupa/skills/decision/README.md). | Yes, a plan |
-| `/skrupa:decision-decision-models` | Lists the decision models, their status, the default and the fallback order. | No |
+| `/sk-dev:decision-ask-question <question and text>` | Any typed question about a text: a choice from a list, yes or no, a level on a scale, or a Fibonacci size estimate. | No |
+| `/sk-dev:decision-suggest-model <task>` | Prints the Claude model and reasoning effort that fit the task. | No |
+| `/sk-dev:decision-run-on-suggested-model <task>` | Picks the model and effort, then runs the task in a subagent with them. | Yes, one task |
+| `/sk-dev:decision-plan-and-run <task>` | Estimates the size, splits the task into steps or milestones, picks the model and effort of each step, writes a plan to `.claude/plans/`, asks for approval, then runs the plan in the main loop (subagents only for parallel, large-context or different-model steps and a final review) and writes a summary. See [the decision skills README](claude-plugins/sk-dev/skills/decision/README.md). | Yes, a plan |
+| `/sk-dev:decision-models` | Lists the decision models, their status, the default and the fallback order. | No |
 
 ### Pick the decision model
 
 Add `--decider <name or alias>` to any command:
 
 ```text
-/skrupa:decision-plan-and-run --decider nimble Add an export to CSV button to the reports page
-/skrupa:decision-suggest-model --decider bf16 Migrate the whole codebase from .NET 6 to .NET 9
+/sk-dev:decision-plan-and-run --decider nimble Add an export to CSV button to the reports page
+/sk-dev:decision-suggest-model --decider bf16 Migrate the whole codebase from .NET 6 to .NET 9
 ```
 
 - Without `--decider`, the default model (`q4`) is used. The skill tells you in one line: `Decision model: ... (default).`
@@ -193,7 +196,7 @@ Exit codes: `0` success, `1` the request was rejected or the model name is unkno
 
 ## Decision models
 
-The models are in [`scripts/models.json`](claude-plugins/skrupa/scripts/decision/models.json):
+The models are in [`scripts/models.json`](claude-plugins/sk-dev/scripts/decision/models.json):
 
 | Name | Model | Backend | Notes |
 |---|---|---|---|
@@ -246,10 +249,10 @@ The temperatures come from the model's `CALIBRATION.json` (choice 1.044 for 2–
 
 - **Questions:** the `model` and `effort` questions of `suggest-model` (4 Claude models, 5 effort levels), and the 7-level Fibonacci size `estimate`.
 - **Test sets:**
-  - [`eval_model.json`](claude-plugins/skrupa/scripts/decision/eval_model.json): 21 tasks, from "Fix a typo" to "Invent and prove correct a new consensus algorithm".
-  - [`eval_model_holdout.json`](claude-plugins/skrupa/scripts/decision/eval_model_holdout.json): 10 tasks not used to tune the question texts, including 2 in Polish.
+  - [`eval_model.json`](claude-plugins/sk-dev/scripts/decision/eval_model.json): 21 tasks, from "Fix a typo" to "Invent and prove correct a new consensus algorithm".
+  - [`eval_model_holdout.json`](claude-plugins/sk-dev/scripts/decision/eval_model_holdout.json): 10 tasks not used to tune the question texts, including 2 in Polish.
   - 5 extra programming tasks (null check, CSV CLI with tests, a DbContext race in ASP.NET Core, splitting an Express.js monolith, a distributed CI system).
-  - [`eval_estimate.json`](claude-plugins/skrupa/scripts/decision/eval_estimate.json): 11 tasks with a story-point size.
+  - [`eval_estimate.json`](claude-plugins/sk-dev/scripts/decision/eval_estimate.json): 11 tasks with a story-point size.
 - **Score:** a field is correct when the top answer equals the expected label. The labels are set by hand, so a few of them can be argued (for example, "review a PR that changes 3 files in the payment flow": Opus or Sonnet).
 - **Hardware:** Mac with Apple Silicon, 128 GB unified memory, Llama app 0.45.0, llama.cpp 0.7.0.
 

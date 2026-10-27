@@ -1,0 +1,15 @@
+{
+  "name": "sk-dev",
+  "version": "3.0.0",
+  "description": "Sebastian Krupa's dev skills. Decision: ask a local decision model (llama.cpp) typed questions, size estimates, and which Claude model and effort fit a task; run a task or a whole plan with subagents. The decision model is chosen per run; the default is basal-omni-1.0-ultra Q4_K_S.",
+  "author": {
+    "name": "Sebastian Krupa"
+  },
+  "skills": [
+    "./skills/decision/decision-ask-question",
+    "./skills/decision/decision-suggest-model",
+    "./skills/decision/decision-run-on-suggested-model",
+    "./skills/decision/decision-plan-and-run",
+    "./skills/decision/decision-models"
+  ]
+}

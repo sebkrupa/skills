@@ -61,7 +61,7 @@ Names checked: `new`, `edit`, `sync`; `--api-key`, `--datasets`, `--start-date`,
 - Commit: `1d829e1` on `sebkrupa/benchmark-session2`.
 - Files changed: `README.md`, `app/garmin_data_handler/__main__.py` (CLI), `app/garmin_data_handler/sync.py` (`full` keyword, `redownload`, 404 guard, `report()`), `app/tests/test_cli.py` (new). `pyproject.toml`, `uv.lock`, `run` untouched.
 - Spec deviations / choices:
-  - `/skrupa:decision-plan-and-run`: used for the estimate only. Plan file and approval step skipped, because the user's instructions already fixed the flow.
+  - `/sk-dev:decision-plan-and-run`: used for the estimate only. Plan file and approval step skipped, because the user's instructions already fixed the flow.
   - Person root fixed to the repo `person/` folder.
   - `--full` also re-downloads activity detail and files; `edit --api-key` deletes the cached `token.json`.
   - Added: strict `yyyy-MM-dd` check, future date rejected, 404 guard in `fetch_activities`.
