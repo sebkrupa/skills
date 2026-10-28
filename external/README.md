@@ -158,6 +158,17 @@ Known limits:
 |---|---|
 | `openui` | Component library design, OpenUI Lang syntax, system prompts, the Renderer, SDK packages and debugging bad LLM output. |
 
+### REA (Reverse Engineer Anything)
+
+- Author: morluto
+- Repository: [morluto/rea](https://github.com/morluto/rea) ([site](https://rea.tools/))
+- Install: `claude plugin marketplace add morluto/rea`, then `claude plugin install rea@rea`. It also adds the REA MCP server. Needs Node.js 22 or later. Native binaries need Hopper, Ghidra or IDA.
+- Use: one MCP server to reverse engineer native binaries, JavaScript and Electron apps, .NET assemblies and websites, with the evidence behind each finding.
+
+| Skill | What it is for |
+|---|---|
+| `reverse-engineer-anything` | Explains how a feature of an app works from its shipped files or runtime, decompiles code, compares versions and guides a rebuild in your project. |
+
 ## Design
 
 ### Agent Skills
