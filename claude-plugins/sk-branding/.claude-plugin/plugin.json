@@ -1,0 +1,11 @@
+{
+  "name": "sk-branding",
+  "version": "1.0.0",
+  "description": "Sebastian Krupa's brand advisor. Grills the user round by round, researches the market, and writes a brand strategy and guideline: positioning, ideal client, voice, slogans, offer, marketing and website content.",
+  "author": {
+    "name": "Sebastian Krupa"
+  },
+  "skills": [
+    "./skills/brand-advisor"
+  ]
+}
