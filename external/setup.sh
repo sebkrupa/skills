@@ -23,6 +23,7 @@ plugin mattpocock/skills mattpocock-skills@mattpocock
 plugin JuliusBrussee/caveman caveman@caveman
 plugin DietrichGebert/ponytail ponytail@ponytail
 skills thesysdev/skills openui
+plugin morluto/rea rea@rea
 
 # Design
 skills MengTo/Skills
