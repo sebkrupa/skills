@@ -16,6 +16,11 @@
       "name": "sk-coach",
       "source": "./sk-coach",
       "description": "Personal coach and day/week planner for Claude Desktop Projects."
+    },
+    {
+      "name": "sk-branding",
+      "source": "./sk-branding",
+      "description": "Brand advisor: grills you, researches the market, and writes a brand strategy and guideline."
     }
   ]
 }

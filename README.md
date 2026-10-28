@@ -4,7 +4,7 @@ Claude Code plugins by Sebastian Krupa.
 
 > The details of every skill are inside its `SKILL.md`. You are more than welcome to read them.
 
-Plugins: [`sk-dev`](claude-plugins/sk-dev) (skills called `/sk-dev:<group>-<skill>`) and [`sk-coach`](claude-plugins/sk-coach) (skills called `/sk-coach:<skill>`).
+Plugins: [`sk-dev`](claude-plugins/sk-dev) (skills called `/sk-dev:<group>-<skill>`) [`sk-coach`](claude-plugins/sk-coach) (skills called `/sk-coach:<skill>`) and [`sk-branding`](claude-plugins/sk-branding) (`/sk-branding:brand-advisor`).
 
 Notable plugins from other repositories: [`external`](external).
 
@@ -36,6 +36,12 @@ A personal coach for Claude Desktop Projects. One project is one person, with it
 | `/sk-coach:daily-planner` | Plans one day (calendar, priorities, spare time) and publishes a checklist page with live progress. |
 | `/sk-coach:weekly-planner` | Plans a week in conversation and seeds each day for the daily planner. |
 
+### branding
+
+| Skill | What it does |
+|---|---|
+| `/sk-branding:brand-advisor` | Grills you round by round, researches the market, and writes a brand strategy and guideline. |
+
 ---
 
 # coach
@@ -50,6 +56,19 @@ Order of use:
 4. `/sk-coach:summary`, `/sk-coach:motivate`, `/sk-coach:revise`, `/sk-coach:fitness` whenever you need them.
 
 Shared rules and the `profil.md` template are in [`references`](claude-plugins/sk-coach/references).
+
+---
+
+# branding
+
+A brand advisor. `/sk-branding:brand-advisor [brand name or URL] [quick]` asks numbered questions in rounds, each with a recommended answer, and pushes back on vague answers. After the first round it researches your site, competitors and market. It then writes `brand/brand-strategy.md`: where you are, where you could be, where you should not be, positioning, ideal client, voice, slogans, offer and pricing, what to stop, marketing and content strategy, website pages with copy, and a 90-day plan.
+
+- Answers are saved in `brand/interview.md`, so you can stop and resume later.
+- Run it again when `brand/brand-strategy.md` exists to revise the strategy (for example every quarter).
+- `quick` gives a draft in two rounds, with every gap marked as an assumption.
+- Runs on Claude Fable (set in the skill). Replies in your language.
+
+Knowledge (Chris Do and The Futur, Sabri Suby, Joanna Galvao, Jasmin Alic, Brendan Kane, plus external frameworks) is in [`references`](claude-plugins/sk-branding/references); sources are listed in `sources.md`.
 
 ---
 
