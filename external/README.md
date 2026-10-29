@@ -169,6 +169,20 @@ Known limits:
 |---|---|
 | `reverse-engineer-anything` | Explains how a feature of an app works from its shipped files or runtime, decompiles code, compares versions and guides a rebuild in your project. |
 
+### TokenEconomizer
+
+- Author: Microsoft Research and UC Berkeley
+- Repository: [microsoft/TokenEconomizer](https://github.com/microsoft/TokenEconomizer) ([site](https://tokeneconomizer.github.io), [paper](https://arxiv.org/abs/2610.22732))
+- Install: `claude plugin marketplace add microsoft/TokenEconomizer`, then `claude plugin install tokeneconomizer@tokeneconomizer`. Needs Python 3.10 or later. Once per machine, and again after Claude Code updates, run `/tokeneconomizer:toolprune refresh-catalog`.
+- Use: makes sessions cheaper in repositories you work in often. It learns from past sessions through hooks: it states repository facts at session start, leaves out tools that go unused and redirects a turn that is stuck in a failure loop. Data stays in `~/.tokeneconomizer`.
+
+| Command | What it is for |
+|---|---|
+| `status`, `repos` | What the plugin learned and saved, per repository. |
+| `microskills`, `facts` | The learned repository facts. |
+| `toolprune`, `untool` | Pruned tools; give a tool back. |
+| `config` | Turn each mechanism on or off and change its settings. |
+
 ## Design
 
 ### Agent Skills

@@ -24,6 +24,7 @@ plugin JuliusBrussee/caveman caveman@caveman
 plugin DietrichGebert/ponytail ponytail@ponytail
 skills thesysdev/skills openui
 plugin morluto/rea rea@rea
+plugin microsoft/TokenEconomizer tokeneconomizer@tokeneconomizer
 
 # Design
 skills MengTo/Skills
