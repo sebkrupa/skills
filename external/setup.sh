@@ -25,14 +25,21 @@ plugin DietrichGebert/ponytail ponytail@ponytail
 skills thesysdev/skills openui
 plugin morluto/rea rea@rea
 plugin microsoft/TokenEconomizer tokeneconomizer@tokeneconomizer
+skills cloudflare/security-audit-skill security-audit
+plugin multica-ai/andrej-karpathy-skills andrej-karpathy-skills@karpathy-skills
+skills tt-a1i/archify archify
 
 # Design
 skills MengTo/Skills
 plugin dembrandt/dembrandt-skills dembrandt@dembrandt
 skills emilkowalski/skills
+plugin pbakaus/impeccable impeccable@impeccable
 
 # Writing
 skills Benjamin-Connelly/cursor-plugins unslop
+
+# Marketing
+plugin AgriciDaniel/claude-seo claude-seo@agricidaniel-claude-seo
 
 if ((${#failed[@]})); then
   echo "Failed: ${failed[*]}" >&2

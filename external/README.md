@@ -183,6 +183,41 @@ Known limits:
 | `toolprune`, `untool` | Pruned tools; give a tool back. |
 | `config` | Turn each mechanism on or off and change its settings. |
 
+### Security Audit
+
+- Author: Cloudflare
+- Repository: [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)
+- Install: `npx skills@latest add cloudflare/security-audit-skill -g -a claude-code -s security-audit -y` (no Claude Code plugin)
+- Use: defensive, source-first security review. Each finding needs a real trust boundary, source evidence, a safe reproduction and the smallest fix.
+
+| Skill | What it is for |
+|---|---|
+| `security-audit` | Guidance for security questions and focused reviews. A full six-phase audit with machine-readable findings runs only when you ask for a full audit or pen test. |
+
+### Karpathy guidelines
+
+- Author: Jiayuan Zhang (forrestchang), Multica
+- Repository: [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
+- Install: `claude plugin marketplace add multica-ai/andrej-karpathy-skills`, then `claude plugin install andrej-karpathy-skills@karpathy-skills`
+- Use: four rules from Andrej Karpathy's notes on LLM coding mistakes: think before coding, simplicity first, surgical changes, goal-driven execution.
+
+| Skill | What it is for |
+|---|---|
+| `karpathy-guidelines` | States assumptions, keeps the code minimal, touches only what the task needs and loops until the success criteria are verified. |
+
+The repository has no license file. `plugin.json` says MIT.
+
+### Archify
+
+- Author: tt-a1i
+- Repository: [tt-a1i/archify](https://github.com/tt-a1i/archify) ([site](https://archify.si))
+- Install: `npx skills@latest add tt-a1i/archify -g -a claude-code -s archify -y` (no Claude Code plugin). Needs Node.js.
+- Use: turns an idea, a plan, Mermaid or a codebase into a checked, interactive standalone HTML diagram with dark and light themes and image, SVG or WebM export.
+
+| Skill | What it is for |
+|---|---|
+| `archify` | Architecture, workflow, sequence, data-flow, state, ERD, class, tree, timeline and waterfall diagrams, and one-page explainers. Not for dashboards. |
+
 ## Design
 
 ### Agent Skills
@@ -233,6 +268,20 @@ Known limits:
 | `break-ui` | Stress-tests a component with worst-case data. |
 | `prototype`, `pick-ui-library`, `ask-sonner`, `write-swift` | UI variants behind a picker, library choice, Sonner toasts, Swift code. |
 
+### Impeccable
+
+- Author: Paul Bakaus
+- Repository: [pbakaus/impeccable](https://github.com/pbakaus/impeccable) ([site](https://impeccable.style))
+- Install: `claude plugin marketplace add pbakaus/impeccable`, then `claude plugin install impeccable@impeccable`. The plugin adds a design hook that scans every UI file the agent edits. Run `/impeccable init` once per project: it writes `PRODUCT.md`.
+- Use: a design vocabulary for the agent. Name a command and a target, for example `/impeccable critique the pricing cards`. 62 deterministic rules catch AI slop.
+
+| Group | What it is for |
+|---|---|
+| `bolder`, `quieter`, `distill`, `colorize`, `typeset`, `layout`, `animate`, `delight`, `overdrive` | Steer the design in one direction. |
+| `critique`, `audit` | Scored UX review; technical report (accessibility, performance, theming, responsive) ranked P0 to P3. |
+| `polish`, `harden`, `clarify`, `adapt`, `optimize`, `onboard` | Finish before shipping: edge cases, copy, screen sizes, speed, first-run flows. |
+| `init`, `document`, `live`, `pin` | Project context (`PRODUCT.md`, `DESIGN.md`), live variants in the dev server, command shortcuts. |
+
 ## Writing
 
 ### unslop
@@ -247,3 +296,20 @@ Known limits:
 | `unslop` | Finds AI writing patterns, rewrites them and self-checks the result. |
 
 The repository has no license file.
+
+## Marketing
+
+### Claude SEO
+
+- Author: Daniel Agrici
+- Repository: [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo)
+- Install: `claude plugin marketplace add AgriciDaniel/claude-seo`, then `claude plugin install claude-seo@agricidaniel-claude-seo`. Needs Python 3.11 to 3.14. Run `/seo setup` once: it makes its own Python environment and a headless browser.
+- Use: SEO audits and plans with parallel subagents. A full `/seo audit` runs some agents on Opus, so it uses more of your plan.
+
+| Group | What it is for |
+|---|---|
+| `/seo setup`, `/seo doctor` | Prepare and check the runtime. |
+| `/seo audit`, `/seo page`, `/seo plan` | Full site audit, one-page analysis, strategy per business type. |
+| `/seo technical`, `/seo sitemap`, `/seo images`, `/seo hreflang`, `/seo programmatic`, `/seo drift` | Technical SEO and change monitoring. |
+| `/seo schema`, `/seo content`, `/seo geo`, `/seo agentic`, `/seo local`, `/seo ecommerce`, `/seo backlinks` | Schema, E-E-A-T content, AI search (GEO/AEO), agent readiness, local, shops, links. |
+| `/seo google` | Google Search Console, PageSpeed, CrUX, GA4 and PDF reports (needs API keys). |
