@@ -194,18 +194,22 @@ Known limits:
 |---|---|
 | `security-audit` | Guidance for security questions and focused reviews. A full six-phase audit with machine-readable findings runs only when you ask for a full audit or pen test. |
 
-### Karpathy guidelines
+### Superpowers
 
-- Author: Jiayuan Zhang (forrestchang), Multica
-- Repository: [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
-- Install: `claude plugin marketplace add multica-ai/andrej-karpathy-skills`, then `claude plugin install andrej-karpathy-skills@karpathy-skills`
-- Use: four rules from Andrej Karpathy's notes on LLM coding mistakes: think before coding, simplicity first, surgical changes, goal-driven execution.
+- Author: Jesse Vincent (obra)
+- Repository: [obra/superpowers](https://github.com/obra/superpowers) (MIT)
+- Install: `claude plugin marketplace add obra/superpowers-marketplace`, then `claude plugin install superpowers@superpowers-marketplace`
+- Use: a full development method as skills: brainstorm, plan, build with TDD and subagents, review, then finish the branch.
 
 | Skill | What it is for |
 |---|---|
-| `karpathy-guidelines` | States assumptions, keeps the code minimal, touches only what the task needs and loops until the success criteria are verified. |
-
-The repository has no license file. `plugin.json` says MIT.
+| `brainstorming`, `writing-plans`, `executing-plans` | Clarify the design, write a detailed plan, run it in one session. |
+| `subagent-driven-development`, `dispatching-parallel-agents` | Run plan tasks in subagents, with spec and code-quality reviews. |
+| `test-driven-development` | Red-green-refactor, with testing anti-patterns. |
+| `systematic-debugging`, `verification-before-completion` | Find the root cause; prove the fix works before you call it done. |
+| `requesting-code-review`, `receiving-code-review` | Ask for a review and act on review feedback. |
+| `using-git-worktrees`, `finishing-a-development-branch` | Isolated worktrees; merge, PR, keep or discard, then clean up. |
+| `writing-skills`, `using-superpowers`, `diagnosing-superpowers` | Write new skills, learn the skill system, debug a session. |
 
 ### Archify
 
