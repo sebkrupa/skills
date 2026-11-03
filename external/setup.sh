@@ -26,7 +26,7 @@ skills thesysdev/skills openui
 plugin morluto/rea rea@rea
 plugin microsoft/TokenEconomizer tokeneconomizer@tokeneconomizer
 skills cloudflare/security-audit-skill security-audit
-plugin multica-ai/andrej-karpathy-skills andrej-karpathy-skills@karpathy-skills
+plugin obra/superpowers-marketplace superpowers@superpowers-marketplace
 skills tt-a1i/archify archify
 
 # Design
