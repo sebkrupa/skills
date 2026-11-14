@@ -222,6 +222,17 @@ Known limits:
 |---|---|
 | `archify` | Architecture, workflow, sequence, data-flow, state, ERD, class, tree, timeline and waterfall diagrams, and one-page explainers. Not for dashboards. |
 
+### Cook
+
+- Author: Leon Lin
+- Repository: [Leonxlnx/cook](https://github.com/Leonxlnx/cook) (MIT)
+- Install: `npx skills@latest add Leonxlnx/cook -g -a claude-code -s cook -y` (no Claude Code plugin)
+- Use: a long autonomous loop for visual builds that must match reference images or videos: one intake, then build, stills, zero-context critics and fixes against a numeric bar. State lives in `cook/` in the project. Trigger with `/cook`.
+
+| Skill | What it is for |
+|---|---|
+| `cook` | 3D worlds in code, code-rendered films, motion videos, games and polished UI, iterated for hours or days until they match the references. |
+
 ## Design
 
 ### Agent Skills
