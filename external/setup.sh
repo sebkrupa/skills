@@ -28,6 +28,7 @@ plugin microsoft/TokenEconomizer tokeneconomizer@tokeneconomizer
 skills cloudflare/security-audit-skill security-audit
 plugin obra/superpowers-marketplace superpowers@superpowers-marketplace
 skills tt-a1i/archify archify
+skills Leonxlnx/cook cook
 
 # Design
 skills MengTo/Skills
