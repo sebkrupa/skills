@@ -22,7 +22,7 @@ If `ROOT` is inside `~/.claude/plugins/cache/`, it is the installed copy, not th
 
 ## Compare mode
 
-If the input starts with `compare`, read `~/.claude/sk-flow/state/log.jsonl`. For the named step, group the rows by version. Report per version: number of runs, median and mean seconds, median input, output and cache tokens, and the share of QA FAIL loops if the step is `qa` or `implement` (count from the `runs` field). Say plainly when a version has too few runs (fewer than 3) to compare. Stop after the report.
+If the input starts with `compare`, read `~/.claude/sk-flow/state/log.jsonl`. For the named step, group the rows by version, model and effort. Report per group: number of runs, median and mean seconds, median input, output and cache tokens, median and total estimated USD (`cost_usd`, with the `prices_as_of` date), and the share of fix loops if the step is `qa` or `implement` (count from the `runs` field). For `qa`, also report from the `qa_*` fields: confirmed per raw finding, disputed findings dropped per confirmed finding, and QA rounds per run. Also report the total USD per run (sum over all steps of the same `run`) per orchestrator version, as the cost of a finished task. Say plainly when a group has too few runs (fewer than 3) to compare. Stop after the report.
 
 ## 1. Read the source
 
