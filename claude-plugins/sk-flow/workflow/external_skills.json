@@ -1,0 +1,15 @@
+{
+  "note": "Every external skill the workflow uses. invoke: skill = Skill tool, agent = Agent subagent_type, read = read the file at <plugin installPath>/<name> and follow it (for skills with disable-model-invocation). Healthcheck results are per machine, in ~/.claude/sk-flow/state/health.json.",
+  "skills": [
+    { "id": "egm-bootstrap",  "plugin": "egm", "invoke": "read", "name": "skills/egm_bootstrap/SKILL.md",   "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "egm-brainstorm", "plugin": "egm", "invoke": "read", "name": "skills/egm_brainstorm/SKILL.md",  "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "egm-draft",      "plugin": "egm", "invoke": "read", "name": "skills/egm_draft/SKILL.md",       "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "egm-review",     "plugin": "egm", "invoke": "read", "name": "skills/egm_review/SKILL.md",      "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "egm-resolve",    "plugin": "egm", "invoke": "read", "name": "skills/egm_resolve/SKILL.md",     "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "egm-drift-report", "plugin": "egm", "invoke": "read", "name": "skills/egm_drift_report/SKILL.md", "install": "claude plugin marketplace add google/elephant-goldfish-model && claude plugin install egm@egm" },
+    { "id": "tdd", "plugin": "mattpocock-skills", "invoke": "skill", "name": "mattpocock-skills:tdd", "install": "claude plugin marketplace add mattpocock/skills && claude plugin install mattpocock-skills@mattpocock" },
+    { "id": "pr",  "plugin": "mattpocock-skills", "invoke": "skill", "name": "mattpocock-skills:pr",  "install": "claude plugin marketplace add mattpocock/skills && claude plugin install mattpocock-skills@mattpocock" },
+    { "id": "incremental-implementation", "plugin": "agent-skills", "invoke": "skill", "name": "agent-skills:incremental-implementation", "install": "claude plugin marketplace add addyosmani/agent-skills && claude plugin install agent-skills@addy-agent-skills" },
+    { "id": "code-reviewer", "plugin": "agent-skills", "invoke": "agent", "name": "agent-skills:code-reviewer", "install": "claude plugin marketplace add addyosmani/agent-skills && claude plugin install agent-skills@addy-agent-skills" }
+  ]
+}

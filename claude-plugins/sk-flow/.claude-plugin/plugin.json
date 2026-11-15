@@ -1,0 +1,12 @@
+{
+  "name": "sk-flow",
+  "version": "1.0.0",
+  "description": "Sebastian Krupa's versioned development workflow. /sk-flow:start runs one task through analyze, clarify, plan, design review, TDD tests, implement, QA and ship. /sk-flow:eval checks an article or note against the workflow and adds new step versions.",
+  "author": {
+    "name": "Sebastian Krupa"
+  },
+  "skills": [
+    "./skills/start",
+    "./skills/eval"
+  ]
+}

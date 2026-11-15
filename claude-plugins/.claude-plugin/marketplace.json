@@ -21,6 +21,11 @@
       "name": "sk-branding",
       "source": "./sk-branding",
       "description": "Brand advisor: grills you, researches the market, and writes a brand strategy and guideline."
+    },
+    {
+      "name": "sk-flow",
+      "source": "./sk-flow",
+      "description": "Versioned development workflow: /sk-flow:start runs a task from analysis to a merged PR; /sk-flow:eval adds ideas from articles as new step versions."
     }
   ]
 }
