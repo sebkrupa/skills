@@ -1,13 +1,15 @@
 {
-  "orchestrator": "v1",
+  "orchestrator": "v3",
+  "main_model": "opus:medium",
   "steps": [
-    { "name": "analyze",       "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["egm-bootstrap"] },
-    { "name": "clarify",       "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-brainstorm"] },
-    { "name": "plan",          "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-draft"] },
-    { "name": "design-review", "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-review", "egm-resolve"] },
-    { "name": "tests",         "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["tdd"] },
-    { "name": "implement",     "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["incremental-implementation"] },
-    { "name": "qa",            "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["code-reviewer", "egm-drift-report"] },
-    { "name": "ship",          "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["pr"] }
+    {"name": "analyze", "version": "v2", "enabled": true, "run_for": ["S", "M", "L"], "model": "main", "external": ["egm-bootstrap"]},
+    {"name": "clarify", "version": "v1", "enabled": true, "run_for": ["M", "L"], "model": "main", "external": ["egm-brainstorm"]},
+    {"name": "plan", "version": "v1", "enabled": true, "run_for": ["M", "L"], "model": "main", "external": ["egm-draft"]},
+    {"name": "design-review", "version": "v1", "enabled": true, "run_for": ["M", "L"], "model": "main", "external": ["egm-review", "egm-resolve"]},
+    {"name": "tests", "version": "v2", "enabled": true, "run_for": ["S", "M", "L"], "model": {"S": "sonnet:medium", "M": "opus:medium", "L": "opus:high"}, "external": ["tdd"]},
+    {"name": "implement", "version": "v3", "enabled": true, "run_for": ["S", "M", "L"], "model": {"S": "sonnet:medium", "M": "opus:medium", "L": "opus:high"}, "external": ["incremental-implementation"]},
+    {"name": "simplify", "version": "v1", "enabled": true, "run_for": ["M", "L"], "model": {"M": "sonnet:medium", "L": "sonnet:medium"}, "external": ["code-simplification"]},
+    {"name": "qa", "version": "v3", "enabled": true, "run_for": ["S", "M", "L"], "model": {"S": "sonnet:medium", "M": "opus:medium", "L": "opus:medium"}, "external": ["code-reviewer", "security-auditor", "egm-drift-report"]},
+    {"name": "ship", "version": "v3", "enabled": true, "run_for": ["S", "M", "L"], "model": "main", "external": ["pr"]}
   ]
 }
