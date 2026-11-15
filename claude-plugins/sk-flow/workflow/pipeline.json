@@ -1,0 +1,13 @@
+{
+  "orchestrator": "v1",
+  "steps": [
+    { "name": "analyze",       "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["egm-bootstrap"] },
+    { "name": "clarify",       "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-brainstorm"] },
+    { "name": "plan",          "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-draft"] },
+    { "name": "design-review", "version": "v1", "enabled": true, "run_for": ["M", "L"],      "external": ["egm-review", "egm-resolve"] },
+    { "name": "tests",         "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["tdd"] },
+    { "name": "implement",     "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["incremental-implementation"] },
+    { "name": "qa",            "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["code-reviewer", "egm-drift-report"] },
+    { "name": "ship",          "version": "v1", "enabled": true, "run_for": ["S", "M", "L"], "external": ["pr"] }
+  ]
+}

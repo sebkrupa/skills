@@ -4,7 +4,7 @@ Claude Code plugins by Sebastian Krupa.
 
 > The details of every skill are inside its `SKILL.md`. You are more than welcome to read them.
 
-Plugins: [`sk-dev`](claude-plugins/sk-dev) (skills called `/sk-dev:<group>-<skill>`) [`sk-coach`](claude-plugins/sk-coach) (skills called `/sk-coach:<skill>`) and [`sk-branding`](claude-plugins/sk-branding) (`/sk-branding:brand-advisor`).
+Plugins: [`sk-dev`](claude-plugins/sk-dev) (skills called `/sk-dev:<group>-<skill>`) [`sk-coach`](claude-plugins/sk-coach) (skills called `/sk-coach:<skill>`) [`sk-branding`](claude-plugins/sk-branding) (`/sk-branding:brand-advisor`) and [`sk-flow`](claude-plugins/sk-flow) (`/sk-flow:start`, `/sk-flow:eval`).
 
 Notable plugins from other repositories: [`external`](external).
 
@@ -35,6 +35,15 @@ A personal coach for Claude Desktop Projects. One project is one person, with it
 | `/sk-coach:fitness` | One health step built into the day. |
 | `/sk-coach:daily-planner` | Plans one day (calendar, priorities, spare time) and publishes a checklist page with live progress. |
 | `/sk-coach:weekly-planner` | Plans a week in conversation and seeds each day for the daily planner. |
+
+### flow
+
+A versioned development workflow: analyze, clarify, plan, design review, TDD tests, implement, QA, ship. Every step is a versioned file, so you can switch back to an older version. Details in [`sk-flow/README.md`](claude-plugins/sk-flow/README.md).
+
+| Skill | What it does |
+|---|---|
+| `/sk-flow:start` | Runs a task (feature or bug fix) from analysis to a merged PR. |
+| `/sk-flow:eval` | Checks an idea from an article or note against the workflow and adds it as a new step version after your approval. Also compares step versions. |
 
 ### branding
 
